@@ -19,8 +19,8 @@ EOF
 sudo service mongod start
 cd /var/www/html
 rm index.nginx-debian.html
-sudo adduser --disabled-password --gecos "" andrew
-sudo adduser andrew www-data
+#sudo adduser --disabled-password --gecos "" andrew
+#sudo adduser andrew www-data
 #git clone https://github.com/cleahy3/node-project.git .
 sudo cp ~/servers/webserver/config/default /etc/nginx/sites-available/default -f
 #sudo chown -R vagrant:www-data ../../www
