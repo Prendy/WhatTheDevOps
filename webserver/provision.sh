@@ -21,7 +21,11 @@ cd /var/www/html
 rm index.nginx-debian.html
 sudo adduser --disabled-password --gecos "" andrew
 sudo adduser andrew www-data
+#git clone https://github.com/cleahy3/node-project.git .
 sudo cp ~/servers/webserver/config/default /etc/nginx/sites-available/default -f
-sudo chown -R www-data:www-data ../../www/*
-sudo chmod -R 0755 ../../www/*
+#sudo chown -R vagrant:www-data ../../www
+sudo chmod -R 0755 ../../www
 sudo service nginx restart
+#sudo npm install
+sudo npm install pm2 -g
+#pm2 start app.js
