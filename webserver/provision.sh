@@ -24,7 +24,7 @@ rm -rf /var/www/html
 sudo cp ./config/default /etc/nginx/sites-available/default -f
 sudo chmod -R 0755 /var/www
 sudo service nginx restart
-sudo cp -R /root/workspace/Andrew/project/. /var/www/html
+#sudo cp -R /root/workspace/Andrew/project/. /var/www/html
 #sudo npm install
 sudo npm install pm2 -g
 #pm2 start app.js
