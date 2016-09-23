@@ -18,15 +18,14 @@ ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
 WantedBy=multi-user.target
 EOF
 sudo service mongod start
-cd /var/www
 rm -rf /var/www/html
 ls -aRl
 #sudo adduser --disabled-password --gecos "" andrew
 #sudo adduser andrew www-data
 #git clone https://github.com/cleahy3/node-project.git .
-sudo cp ~/servers/webserver/config/default /etc/nginx/sites-available/default -f
+sudo cp ./config/default /etc/nginx/sites-available/default -f
 #sudo chown -R vagrant:www-data ../../www
-sudo chmod -R 0755 ../../www
+sudo chmod -R 0755 /var/www
 sudo service nginx restart
 #sudo npm install
 sudo npm install pm2 -g
