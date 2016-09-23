@@ -18,7 +18,7 @@ ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
 WantedBy=multi-user.target
 EOF
 sudo service mongod start
-cd /var/www
+cd ..
 ls -aRl
 rm /var/www/html/index.nginx-debian.html
 #sudo adduser --disabled-password --gecos "" andrew
