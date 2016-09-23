@@ -22,7 +22,7 @@ rm -rf /var/www/html
 #sudo adduser andrew www-data
 #git clone https://github.com/cleahy3/node-project.git .
 sudo cp ./config/default /etc/nginx/sites-available/default -f
-#sudo chown -R vagrant:www-data ../../www
+sudo chown -R www-data:www-data var/www/html
 sudo chmod -R 0755 /var/www
 sudo service nginx restart
 sudo cp -R /root/workspace/Andrew/project/. /var/www/html
