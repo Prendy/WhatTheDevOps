@@ -29,3 +29,5 @@ sudo cp -R /root/workspace/Andrew/project/. /var/www/html
 #sudo npm install
 sudo npm install pm2 -g
 #pm2 start app.js
+content=$(wget localhost:3000/films -q -O -)
+echo $content
