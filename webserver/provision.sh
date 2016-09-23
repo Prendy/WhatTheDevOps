@@ -24,6 +24,7 @@ ls -aRl
 #sudo adduser andrew www-data
 #git clone https://github.com/cleahy3/node-project.git .
 sudo cp ./config/default /etc/nginx/sites-available/default -f
+cat /etc/nginx/sites-available/default
 #sudo chown -R vagrant:www-data ../../www
 sudo chmod -R 0755 /var/www
 sudo service nginx restart
