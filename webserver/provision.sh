@@ -18,7 +18,6 @@ WantedBy=multi-user.target
 EOF
 sudo service mongod start
 rm -rf /var/www/html
-ls -aRl
 #sudo adduser --disabled-password --gecos "" andrew
 #sudo adduser andrew www-data
 #git clone https://github.com/cleahy3/node-project.git .
