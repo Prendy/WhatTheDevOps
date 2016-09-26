@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "api" do |api|
     api.vm.box = "bento/ubuntu-16.04"
-    api.vm.provision "shell", path: "webserver/provision.sh"
+    api.vm.provision "shell", path: "webserver/provision_api.sh"
     api.vm.network :forwarded_port, guest: 80, host: 3001
     api.vm.network "private_network", ip: "192.10.10.150"
     api.vm.synced_folder "webserver/", "/root/servers/webserver"
