@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     app.vm.box = "bento/ubuntu-16.04"
     app.vm.provision "shell", path: "webserver/provision.sh"
     app.vm.network :forwarded_port, guest: 80, host: 3000
-    app.vm.network "private_network", ip: "192.168.50.1"
+    app.vm.network "private_network", ip: "192.10.10.100"
     app.vm.synced_folder "webserver/", "/root/servers/webserver"
     app.vm.synced_folder "../app", "/var/www/html"
     app.vm.provision "shell", inline: "sudo usermod -a -G www-data vagrant"
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
     api.vm.box = "bento/ubuntu-16.04"
     api.vm.provision "shell", path: "webserver/provision.sh"
     api.vm.network :forwarded_port, guest: 80, host: 3001
-    api.vm.network "private_network", ip: "192.168.50.2"
+    api.vm.network "private_network", ip: "192.10.10.150"
     api.vm.synced_folder "webserver/", "/root/servers/webserver"
     api.vm.synced_folder "../api", "/var/www/html"
     api.vm.provision "shell", inline: "sudo usermod -a -G www-data vagrant"
@@ -33,8 +33,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "db" do |db|
     db.vm.box = "bento/ubuntu-16.04"
     db.vm.provision "shell", path: "database/provision.sh"
-    #db.vm.network :forwarded_port, guest: 80, host: 3002
-    db.vm.network "private_network", ip: "192.168.50.3"
+    #db.vm.network :forwarded_port, guest: 80, host: 27017
+    db.vm.network "private_network", ip: "192.10.10.200"
     db.vm.synced_folder "database/", "/root/servers/database"
     #db.vm.provision "shell", inline: "sudo usermod -a -G www-data vagrant"
     #db.vm.provision "shell", inline: "sudo chown -R vagrant:www-data /var/www"
