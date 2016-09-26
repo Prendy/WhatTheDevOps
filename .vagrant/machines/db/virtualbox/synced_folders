@@ -1,1 +1,0 @@
-{"virtualbox":{"/root/servers/database":{"guestpath":"/root/servers/database","hostpath":"/Users/apr19/www.poker.com/servers/database","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/apr19/www.poker.com/servers","disabled":false,"__vagrantfile":true}}}
