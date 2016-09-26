@@ -10,4 +10,12 @@ After cloning, open the terminal and point it at the 'servers' folder. Then type
 
 Vagrant is set up such that the overall app is split into three virtual machines: app, api, and db. If you have any of your app code pointing at a database, make sure you use the local ip of the database: ```192.10.10.200```. Previously I think you would have used localhost. The 'app' machine will automatically pull the files from the app folder and the 'api' machine will pull the files from the api folder. 
 
-If you need to access the servers, type ```vagrant ssh app``` for the app server, ```vagrant ssh api``` for the api server, and ```vagrant ssh db``` for the database server.
+If you need to access the VMs, type ```vagrant ssh app``` for the app VM, ```vagrant ssh api``` for the api VM, and ```vagrant ssh db``` for the database VM.
+
+## Starting the app
+
+1. First, access the app vm by typing ```vagrant ssh app``` in the terminal. 
+2. ```cd /var/www/html```
+3. ```npm install```
+4. ```node app.js```
+5. The app should run!
