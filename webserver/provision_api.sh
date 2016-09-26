@@ -7,7 +7,7 @@ rm index.nginx-debian.html
 #sudo adduser --disabled-password --gecos "" andrew
 #sudo adduser andrew www-data
 #git clone https://github.com/cleahy3/node-project.git .
-#sudo cp ~/servers/webserver/config/default /etc/nginx/sites-available/default -f
+sudo cp ~/servers/webserver/config/default_api /etc/nginx/sites-available/default -f
 sudo chown -R www-data:www-data /var/www/*
 sudo chmod -R 0755 /var/www/*
 sudo service nginx restart
