@@ -19,10 +19,6 @@ service 'nginx' do
   action [ :enable, :start ]
 end
 
-template '/etc/nginx/sites-enabled/default' do
- source 'default.nginx.erb'
-end
-
 file '/var/www/html/index.nginx-debian.html' do
   action :delete
   only_if { File.exist? '/var/www/html/index.nginx-debian.html' }
