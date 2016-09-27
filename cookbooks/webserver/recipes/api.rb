@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: webserver
-# Recipe:: default
+# Recipe:: api
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
@@ -33,6 +33,10 @@ directory '/var/www' do
  group 'www-data'
  mode '0775'
  action :create
+end
+
+service 'nginx' do
+  action [ :restart ]
 end
 
 execute "sudo npm install pm2 -g" do
