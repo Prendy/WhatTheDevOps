@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
     app.vm.network "private_network", ip: "192.10.10.100"
     app.vm.synced_folder "webserver/", "/root/servers/webserver"
     app.vm.synced_folder "../app", "/var/www/html"
+    app.vm.synced_folder "../api", "/var/www/html/api"
     app.vm.synced_folder "cookbooks/", "/home/vagrant/cookbooks"
     app.vm.provision "shell", inline: "sudo usermod -a -G www-data vagrant"
     app.vm.provision "shell", inline: "sudo chown -R vagrant:www-data /var/www"
@@ -28,20 +29,20 @@ Vagrant.configure("2") do |config|
     app.vm.provision "shell", inline: "sudo chef-client --local-mode --runlist 'recipe[webserver]'"
   end
 
-  config.vm.define "api" do |api|
-    api.vm.box = "bento/ubuntu-16.04"
-    #api.vm.provision "shell", path: "webserver/provision_api.sh"
-    api.vm.network :forwarded_port, guest: 80, host: 3001
-    api.vm.network "private_network", ip: "192.10.10.150"
-    api.vm.synced_folder "webserver/", "/root/servers/webserver"
-    api.vm.synced_folder "../api", "/var/www/html"
-    api.vm.synced_folder "cookbooks/", "/home/vagrant/cookbooks"
-    api.vm.provision "shell", inline: "sudo usermod -a -G www-data vagrant"
-    api.vm.provision "shell", inline: "sudo chown -R vagrant:www-data /var/www"
-    api.vm.provision "shell", inline: "sudo apt-get install curl"
-    api.vm.provision "shell", inline: "curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable -v 0.16.28"
-    api.vm.provision "shell", inline: "sudo chef-client --local-mode --runlist 'recipe[webserver::api]'"
-  end
+  # config.vm.define "api" do |api|
+  #   api.vm.box = "bento/ubuntu-16.04"
+  #   #api.vm.provision "shell", path: "webserver/provision_api.sh"
+  #   api.vm.network :forwarded_port, guest: 80, host: 3001
+  #   api.vm.network "private_network", ip: "192.10.10.150"
+  #   api.vm.synced_folder "webserver/", "/root/servers/webserver"
+  #   api.vm.synced_folder "../api", "/var/www/html"
+  #   api.vm.synced_folder "cookbooks/", "/home/vagrant/cookbooks"
+  #   api.vm.provision "shell", inline: "sudo usermod -a -G www-data vagrant"
+  #   api.vm.provision "shell", inline: "sudo chown -R vagrant:www-data /var/www"
+  #   api.vm.provision "shell", inline: "sudo apt-get install curl"
+  #   api.vm.provision "shell", inline: "curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable -v 0.16.28"
+  #   api.vm.provision "shell", inline: "sudo chef-client --local-mode --runlist 'recipe[webserver::api]'"
+  # end
 
   config.vm.define "db" do |db|
     db.vm.box = "bento/ubuntu-16.04"

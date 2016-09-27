@@ -19,18 +19,24 @@ service 'nginx' do
   action [ :enable, :start ]
 end
 
+template '/etc/nginx/sites-enabled/default' do
+ source 'default.erb'
+end
+
 file '/var/www/html/index.nginx-debian.html' do
   action :delete
   only_if { File.exist? '/var/www/html/index.nginx-debian.html' }
 end
 
-directory '/var/www' do
- owner 'www-data'
- group 'www-data'
- mode '0775'
- action :create
+execute "change permissions on html" do
+  command "sudo chown -R www-data:www-data /var/www/*"
+  command "sudo chmod -R 0755 /var/www/*"
 end
 
 execute "sudo npm install pm2 -g" do
   command "sudo npm install pm2 -g"
+end
+
+service 'nginx' do
+  action [ :restart ]
 end
