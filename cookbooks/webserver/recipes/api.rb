@@ -20,7 +20,7 @@ service 'nginx' do
 end
 
 template '/etc/nginx/sites-enabled/default' do
- source 'default.erb'
+ source 'default_api.erb'
 end
 
 file '/var/www/html/index.nginx-debian.html' do
