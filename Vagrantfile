@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   #config.vm.provision "shell", inline: "cd /var/www/html"
   #config.vm.provision "shell", inline: "sudo usermod -a -G www-data vagrant"
   #config.vm.provision "shell", inline: "sudo chown -R vagrant:www-data /var/www"
-  ######
+  #######ß
   config.vm.define "test" do |test|
     test.vm.box = "bento/ubuntu-16.04"
     test.vm.synced_folder "cookbooks/", "/home/vagrant/cookbooks"
