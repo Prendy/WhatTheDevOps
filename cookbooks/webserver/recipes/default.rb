@@ -18,6 +18,9 @@ package 'ruby-full'
 execute "gem install rspec" do
   command "gem install rspec"
 end
+execute "gem install selenium" do
+  command "gem install selenium-webdriver"
+end
 
 service 'nginx' do
   action [ :enable, :start ]
