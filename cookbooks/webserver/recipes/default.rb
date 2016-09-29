@@ -22,6 +22,10 @@ execute "gem install selenium" do
   command "gem install selenium-webdriver"
 end
 
+execute "clean up dependencies" do
+    command "sudo apt-get -f install"
+end
+
 execute "install some dependencies" do
   command "sudo apt-get install libxss1 libappindicator1 libindicator7"
 end
@@ -34,9 +38,7 @@ execute "install chrome" do
   command "sudo dpkg -i google-chrome*.deb"
 end
 
-execute "clean up dependencies" do
-    command "sudo apt-get -f install"
-end
+
 
 execute "instal xvfb" do
   command "sudo apt-get install xvfb"
