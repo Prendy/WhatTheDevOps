@@ -22,6 +22,22 @@ execute "gem install selenium" do
   command "gem install selenium-webdriver"
 end
 
+execute "download & install chrome" do
+  command "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+  command "sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb"
+  command "sudo apt-get install -f"
+end
+
+execute "install chromedriver" do
+  command "sudo apt-get install unzip"
+  command "wget -N http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip"
+  command "unzip chromedriver_linux64.zip"
+  command "chmod +x chromedriver"
+  command "sudo mv -f chromedriver /usr/local/share/chromedriver"
+  command "sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver"
+  command "sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver"
+end
+
 service 'nginx' do
   action [ :enable, :start ]
 end
