@@ -23,9 +23,11 @@ execute "gem install selenium" do
 end
 
 execute "download & install chrome" do
+  command "sudo apt-get install libxss1 libappindicator1 libindicator7"
   command "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-  command "sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb"
+  command "sudo dpkg -i google-chrome*.deb"
   command "sudo apt-get install -f"
+  command "sudo apt-get install xvfb"
 end
 
 execute "install chromedriver" do
