@@ -14,6 +14,7 @@ package 'nodejs'
 package 'build-essential'
 package 'npm'
 package 'nodejs-legacy'
+gem install rspec
 
 service 'nginx' do
   action [ :enable, :start ]
