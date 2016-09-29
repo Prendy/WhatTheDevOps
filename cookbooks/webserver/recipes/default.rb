@@ -24,7 +24,7 @@ end
 
 execute "download & install chrome" do
   command "sudo apt-get -f install"
-  command "sudo apt-get install libxss1 libappindicator1 libindicator7"
+  command "sudo apt-get install libxss1 libappindicator1 libindicator7 libgconf-2-4 libpango1.0-0 fonts-liberation libcurl3 xdg-utils xserver-common libgl1-mesa-glx libxfont1"
   #command "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
   #command "sudo dpkg -i google-chrome*.deb"
 
