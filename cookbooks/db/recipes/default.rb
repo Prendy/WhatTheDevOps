@@ -29,5 +29,5 @@ template '/etc/mongod.conf' do
 end
 
 execute "start mongo" do
-  command "mongod"
+  command "sudo service mongod start"
 end
