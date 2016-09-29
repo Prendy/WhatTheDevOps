@@ -14,7 +14,9 @@ package 'nodejs'
 package 'build-essential'
 package 'npm'
 package 'nodejs-legacy'
-gem install rspec
+execute "gem install rspec" do
+  command "gem install rspec"
+end
 
 service 'nginx' do
   action [ :enable, :start ]
