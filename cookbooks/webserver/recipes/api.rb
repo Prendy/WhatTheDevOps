@@ -19,6 +19,10 @@ service 'nginx' do
   action [ :enable, :start ]
 end
 
+template '/etc/nginx/nginx.conf' do
+  source 'nginx.conf.erb'
+end
+
 template '/etc/nginx/sites-enabled/default' do
  source 'default_api.erb'
 end
