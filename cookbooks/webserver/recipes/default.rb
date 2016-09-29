@@ -14,6 +14,7 @@ package 'nodejs'
 package 'build-essential'
 package 'npm'
 package 'nodejs-legacy'
+package 'ruby-full'
 execute "gem install rspec" do
   command "gem install rspec"
 end
