@@ -27,7 +27,7 @@ execute "clean up dependencies" do
 end
 
 execute "install some dependencies" do
-  command "sudo apt-get install libxss1 libappindicator1 libindicator7"
+  command "sudo apt-get install libxss1 libappindicator1 libindicator7 -y"
 end
 
 execute "download chrome" do
