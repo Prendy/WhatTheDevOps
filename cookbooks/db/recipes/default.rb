@@ -28,6 +28,6 @@ template '/etc/mongod.conf' do
  source 'mongod.conf.erb'
 end
 
-service 'mongod' do
-  action [ :start ]
+execute "start mongo" do
+  command "mongod"
 end
