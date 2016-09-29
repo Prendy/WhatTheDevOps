@@ -41,7 +41,7 @@ end
 
 
 execute "instal xvfb" do
-  command "sudo apt-get install xvfb"
+  command "sudo apt-get install xvfb -y"
 end
 
 execute "install chromedriver" do
