@@ -23,7 +23,7 @@ execute "gem install selenium" do
 end
 
 execute "clean up dependencies" do
-    command "sudo apt-get -f install"
+    command "sudo apt-get install -f"
 end
 
 execute "install some dependencies" do
