@@ -4,6 +4,11 @@ docker stop andrew-app andrew-api
 docker rm andrew-app andrew-api
 set -e
 
+cp -r ~/www.poker.com/api ./my-node-api/
+cp -r ~/www.poker.com/app ./my-node-app/
+rm -rf ./my-node-api/api/.git
+rm -rf ./my-node-app/app/.git
+
 pushd my-nodejs
 docker build --tag my-nodejs:latest .
 popd
