@@ -1,7 +1,7 @@
 #!/bin/bash
 set +e
-docker stop andrew-app andrew-api
-docker rm andrew-app andrew-api
+docker stop andrew-app andrew-api andrew-db
+docker rm andrew-app andrew-api andrew-db
 find my-node-api/api/* -type d -not -name '.gitignore' -print0 | xargs -0 rm -rf --
 find my-node-app/app/* -type d -not -name '.gitignore' -print0 | xargs -0 rm -rf --
 set -e
@@ -20,6 +20,10 @@ popd
 pushd my-node-api
 docker build --tag my-node-api:latest .
 popd
+pushd my-mongodb
+docker build --tag my-mongodb:latest .
+popd
+docker run --name andrew-db -p 27017:27017 -d my-mongodb:latest
 docker run --name andrew-api -p 3001:3000 -d my-node-api:latest
 docker run --name andrew-app -p 3000:3000 -d my-node-app:latest
 docker ps -a
