@@ -2,6 +2,8 @@
 set +e
 docker stop andrew-app andrew-api
 docker rm andrew-app andrew-api
+find my-node-api/api/* -type d -not -name '.gitignore' -print0 | xargs -0 rm -rf --
+find my-node-app/app/* -type d -not -name '.gitignore' -print0 | xargs -0 rm -rf --
 set -e
 
 cp -r ~/www.poker.com/api ./my-node-api/
