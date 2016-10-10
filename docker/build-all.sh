@@ -36,7 +36,7 @@ set -e
 if [[ "$FOUND_REDIS" == "0" ]]; then
   echo -e "\033[0;32mRedis data store already exists\033[0m"
 else
-  echo -e "\033[0;34mCreate data container\033[0m"
+  echo -e "\033[0;34mCreating data container\033[0m"
   docker create --name my-redis-data my-redis-data:latest
 fi
 
