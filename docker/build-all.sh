@@ -26,6 +26,9 @@ popd
 pushd my-redis-data
 docker build --tag my-redis-data:latest .
 popd
+pushd my-mongo-data
+docker build --tag my-mongo-data:latest .
+popd
 
 echo -e "\033[0;31mChecking for my-redis-data \033[0m"
 set +e
@@ -36,13 +39,26 @@ set -e
 if [[ "$FOUND_REDIS" == "0" ]]; then
   echo -e "\033[0;32mRedis data store already exists\033[0m"
 else
-  echo -e "\033[0;34mCreating data container\033[0m"
+  echo -e "\033[0;34mCreating redis data container\033[0m"
   docker create --name my-redis-data my-redis-data:latest
+fi
+
+echo -e "\033[0;31mChecking for my-mongo-data \033[0m"
+set +e
+docker ps -a | grep my-mongo-data > /dev/null
+FOUND_MONGO=$?
+set -e
+
+if [[ "$FOUND_MONGO" == "0" ]]; then
+  echo -e "\033[0;32mMongo data store already exists\033[0m"
+else
+  echo -e "\033[0;34mCreating mongo data container\033[0m"
+  docker create --name my-mongo-data my-mongo-data:latest
 fi
 
 echo -e "\033[0;36mRunning everything else\033[0m"
 docker run --name my-redis-db --volumes-from my-redis-data -d redis:latest
-docker run --name andrew-db -p 27017:27017 -d my-mongodb:latest
+docker run --name andrew-db -p 27017:27017 --volumes-from my-mongo-data -d my-mongodb:latest
 docker run --name andrew-api -p 3001:3000 -d my-node-api:latest
 docker run --name andrew-app -p 3000:3000 -d my-node-app:latest
 docker ps -a
